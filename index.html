@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自動叫號系統</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 5rem;
+      margin: 20px;
+    }
+    button {
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="number-display">1</h1>
+  <div>
+    <button id="prev-button">上一號</button>
+    <button id="next-button">下一號</button>
+  </div>
+
+  <script>
+    let currentNumber = 1;
+
+    const numberDisplay = document.getElementById("number-display");
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+
+    prevButton.addEventListener("click", () => {
+      if (currentNumber > 1) {
+        currentNumber--;
+        updateDisplay();
+      }
+    });
+
+    nextButton.addEventListener("click", () => {
+      currentNumber++;
+      updateDisplay();
+    });
+
+    function updateDisplay() {
+      numberDisplay.textContent = currentNumber;
+    }
+  </script>
+</body>
+</html>
