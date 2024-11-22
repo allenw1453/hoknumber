@@ -8,7 +8,7 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
       height: 100vh;
@@ -24,7 +24,7 @@
       font-size: 1.5rem;
     }
     h1 {
-      font-size: 200px; /* 數字大小設定為 200px */
+      font-size: 300px; /* 數字大小設定為 300px */
       margin: 20px 0 10px;
     }
     p {
@@ -38,9 +38,20 @@
       margin: 10px;
       cursor: pointer;
     }
+    input[type="number"] {
+      font-size: 2rem;
+      width: 150px;
+      padding: 10px;
+      margin: 10px 20px; /* 右方空出兩個按鈕大小 */
+    }
     .button-container {
       display: flex;
       gap: 20px;
+    }
+    .input-container {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
     }
     .footer {
       position: absolute;
@@ -60,6 +71,10 @@
     <button id="repeat-button">重新叫號</button>
     <button id="next-button">下一號</button>
   </div>
+  <div class="input-container">
+    <input type="number" id="set-number-input" placeholder="輸入編號" />
+    <button id="set-number-button">設定編號</button>
+  </div>
   <div class="footer">© Allen 202411220953</div>
 
   <script>
@@ -69,6 +84,8 @@
     const prevButton = document.getElementById("prev-button");
     const nextButton = document.getElementById("next-button");
     const repeatButton = document.getElementById("repeat-button");
+    const setNumberInput = document.getElementById("set-number-input");
+    const setNumberButton = document.getElementById("set-number-button");
 
     // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
@@ -105,6 +122,17 @@
     // 重新叫號按鈕
     repeatButton.addEventListener("click", () => {
       speakNumber(currentNumber);
+    });
+
+    // 設定編號按鈕
+    setNumberButton.addEventListener("click", () => {
+      const inputValue = parseInt(setNumberInput.value, 10);
+      if (!isNaN(inputValue) && inputValue > 0) {
+        currentNumber = inputValue;
+        updateDisplay();
+      } else {
+        alert("請輸入有效的號碼（正整數）！");
+      }
     });
 
     // 初始化發聲
