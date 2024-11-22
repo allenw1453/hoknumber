@@ -108,7 +108,7 @@
     // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
       const synth = window.speechSynthesis;
-      const message = `請 ${number} 號家屬前來找社工辦理業務`;
+      const message = ` 請 ${number} 號家屬前來找社工辦理業務`;
       const utterance1 = new SpeechSynthesisUtterance(message);
       const utterance2 = new SpeechSynthesisUtterance(message);
       utterance1.lang = "zh-TW";
