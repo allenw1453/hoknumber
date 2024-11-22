@@ -23,12 +23,11 @@
       text-align: center;
       padding: 10px 0;
       font-size: 1.5rem;
-      position: relative;
     }
     #fullscreen-button {
       position: absolute;
-      top: 10px;
-      right: 20px;
+      bottom: 40px;
+      right: 10px;
       background-color: white;
       color: black;
       border: 1px solid gray;
@@ -75,10 +74,7 @@
   </style>
 </head>
 <body>
-  <header>
-    社工換約/補助叫號系統
-    <button id="fullscreen-button">全螢幕</button>
-  </header>
+  <header>社工換約/補助叫號系統</header>
   <p>&nbsp;</p>
   <p>如過號請重新領取號碼牌</p>
   <h1 id="number-display">1</h1>
@@ -91,6 +87,7 @@
     <input type="number" id="set-number-input" placeholder="輸入編號" />
     <button id="set-number-button">設定編號</button>
   </div>
+  <button id="fullscreen-button">全螢幕</button>
   <div class="footer">© Allen 202411221028</div>
 
   <script>
@@ -107,7 +104,7 @@
     // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
       const synth = window.speechSynthesis;
-      const message = `請 ${number} 號家屬前來社工區辦理業務`;
+      const message = `請號碼牌 ${number} 號家屬至社工區`;
       const utterance1 = new SpeechSynthesisUtterance(message);
       const utterance2 = new SpeechSynthesisUtterance(message);
       utterance1.lang = "zh-TW";
