@@ -23,6 +23,18 @@
       text-align: center;
       padding: 10px 0;
       font-size: 1.5rem;
+      position: relative;
+    }
+    #fullscreen-button {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      background-color: white;
+      color: black;
+      border: 1px solid gray;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
     }
     h1 {
       font-size: 250px; /* 數字大小設定為 250px */
@@ -64,9 +76,12 @@
   </style>
 </head>
 <body>
-  <header>社工換約/補助叫號系統</header>
-  <div class="spacer"></div> <!-- 空間 -->
+  <header>
+    社工換約/補助叫號系統
+    <button id="fullscreen-button">全螢幕</button>
+  </header>
   <p>如過號請重新領取號碼牌</p>
+  <div class="spacer"></div> <!-- 空間 -->
   <h1 id="number-display">1</h1>
   <div class="button-container">
     <button id="prev-button">上一號</button>
@@ -88,6 +103,7 @@
     const repeatButton = document.getElementById("repeat-button");
     const setNumberInput = document.getElementById("set-number-input");
     const setNumberButton = document.getElementById("set-number-button");
+    const fullscreenButton = document.getElementById("fullscreen-button");
 
     // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
@@ -106,6 +122,20 @@
       numberDisplay.textContent = currentNumber;
       speakNumber(currentNumber);
     }
+
+    // 全螢幕功能
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        fullscreenButton.textContent = "退出全螢幕";
+      } else {
+        document.exitFullscreen();
+        fullscreenButton.textContent = "全螢幕";
+      }
+    }
+
+    // 監聽全螢幕按鈕
+    fullscreenButton.addEventListener("click", toggleFullscreen);
 
     // 上一號按鈕
     prevButton.addEventListener("click", () => {
