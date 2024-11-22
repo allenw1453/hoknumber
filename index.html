@@ -3,26 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>自動叫號系統</title>
+  <title>社工換約/補助叫號系統</title>
   <style>
     body {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       font-family: Arial, sans-serif;
       height: 100vh;
       margin: 0;
       position: relative;
     }
+    header {
+      width: 100%;
+      background-color: red;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.5rem;
+    }
     h1 {
       font-size: 200px; /* 數字大小設定為 200px */
-      margin: 20px;
+      margin: 20px 0 10px;
     }
     p {
       color: red;
       font-size: 1.5rem;
-      margin-bottom: 20px;
+      margin: 0 0 20px;
     }
     button {
       font-size: 2rem;
@@ -44,8 +52,9 @@
   </style>
 </head>
 <body>
+  <header>社工換約/補助叫號系統</header>
+  <p>如過號請重新領取號碼牌</p>
   <h1 id="number-display">1</h1>
-  <p>如過號重新領取號碼牌</p>
   <div class="button-container">
     <button id="prev-button">上一號</button>
     <button id="repeat-button">重新叫號</button>
@@ -61,13 +70,16 @@
     const nextButton = document.getElementById("next-button");
     const repeatButton = document.getElementById("repeat-button");
 
-    // 語音叫號函數
+    // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
       const synth = window.speechSynthesis;
       const message = `請 ${number} 號家屬前來找社工辦理業務`;
-      const utterance = new SpeechSynthesisUtterance(message);
-      utterance.lang = "zh-TW";
-      synth.speak(utterance);
+      const utterance1 = new SpeechSynthesisUtterance(message);
+      const utterance2 = new SpeechSynthesisUtterance(message);
+      utterance1.lang = "zh-TW";
+      utterance2.lang = "zh-TW";
+      synth.speak(utterance1);
+      synth.speak(utterance2);
     }
 
     // 更新顯示及發聲
