@@ -5,17 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>社工換約/補助叫號系統</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
-      height: 100vh;
-      margin: 0;
       overflow: hidden;
-      position: relative;
     }
+
     header {
       width: 100%;
       background-color: red;
@@ -24,38 +26,47 @@
       padding: 10px 0;
       font-size: 1.5rem;
     }
+
     h1 {
-      font-size: 400px; /* 數字大小設定為 400px */
+      font-size: 15vw; /* 號碼根據視窗寬度調整大小 */
       margin: 20px 0 10px;
     }
+
     p {
       color: red;
       font-size: 1.5rem;
       margin: 0;
     }
-    button {
-      font-size: 0.8rem; /* 按鈕字體 */
-      padding: 5px 10px; /* 調整按鈕內邊距 */
-      cursor: pointer;
-    }
-    input[type="number"] {
-      font-size: 0.8rem; /* 與按鈕一致 */
-      width: 150px;
-      padding: 5px;
-      margin: 10px 20px; /* 右方空出兩個按鈕大小 */
-    }
+
     .button-container {
       display: flex;
-      gap: 10px; /* 縮小按鈕間距 */
-    }
-    .input-container {
-      display: flex;
-      align-items: center;
+      justify-content: center;
+      gap: 1vw; /* 按鈕間距隨視窗調整 */
       margin-top: 20px;
     }
+
+    button {
+      font-size: 1.5vw; /* 按鈕大小動態調整 */
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    input[type="number"] {
+      font-size: 1.5vw;
+      width: 150px;
+      padding: 10px;
+      margin: 10px 20px;
+    }
+
+    .input-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
     #fullscreen-button {
       position: absolute;
-      bottom: 40px;
+      bottom: 50px;
       right: 10px;
       background-color: white;
       color: black;
@@ -64,12 +75,24 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
+
     .footer {
       position: absolute;
       bottom: 10px;
       right: 10px;
       font-size: 0.8rem;
       color: gray;
+    }
+
+    /* RWD: 適應小螢幕 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 20vw; /* 更大字體以適應小螢幕 */
+      }
+
+      button, input[type="number"] {
+        font-size: 2.5vw; /* 按鈕與輸入框更大 */
+      }
     }
   </style>
 </head>
