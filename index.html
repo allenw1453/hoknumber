@@ -49,7 +49,7 @@
     // 語音叫號函數
     function speakNumber(number) {
       const synth = window.speechSynthesis;
-      const utterance = new SpeechSynthesisUtterance(`請 ${number} 號家屬前來社工區辦理業務`);
+      const utterance = new SpeechSynthesisUtterance(`請號碼牌 ${number} 號的家屬前來找社工辦理業務`);
       utterance.lang = "zh-TW";
       synth.speak(utterance);
     }
