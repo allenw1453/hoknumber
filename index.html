@@ -37,16 +37,13 @@
       cursor: pointer;
     }
     h1 {
-      font-size: 250px; /* 數字大小設定為 250px */
+      font-size: 300px; /* 數字大小設定為 300px */
       margin: 20px 0 10px;
     }
     p {
       color: red;
       font-size: 1.5rem;
       margin: 0;
-    }
-    .spacer {
-      height: 20px; /* 模擬一個 <p> 的空間 */
     }
     button {
       font-size: 1.8rem; /* 按鈕字體稍微縮小 */
@@ -70,6 +67,9 @@
       margin-top: 20px;
     }
     .footer {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
       font-size: 0.8rem;
       color: gray;
     }
@@ -92,7 +92,7 @@
     <input type="number" id="set-number-input" placeholder="輸入編號" />
     <button id="set-number-button">設定編號</button>
   </div>
-  <div class="footer">© Allen 202411221028</div>
+  <div class="footer">© Allen 202411221122</div>
 
   <script>
     let currentNumber = 1;
@@ -108,7 +108,7 @@
     // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
       const synth = window.speechSynthesis;
-      const message = ` 請號碼牌 ${number} 號家屬請至社工區`;
+      const message = `請 ${number} 號家屬前來找社工辦理業務`;
       const utterance1 = new SpeechSynthesisUtterance(message);
       const utterance2 = new SpeechSynthesisUtterance(message);
       utterance1.lang = "zh-TW";
