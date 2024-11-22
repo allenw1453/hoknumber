@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,21 +15,26 @@
       margin: 0;
     }
     h1 {
-      font-size: 5rem;
+      font-size: 10rem;
       margin: 20px;
     }
     button {
-      font-size: 1.5rem;
-      padding: 10px 20px;
+      font-size: 2rem;
+      padding: 15px 30px;
       margin: 10px;
       cursor: pointer;
+    }
+    .button-container {
+      display: flex;
+      gap: 20px;
     }
   </style>
 </head>
 <body>
   <h1 id="number-display">1</h1>
-  <div>
+  <div class="button-container">
     <button id="prev-button">上一號</button>
+    <button id="repeat-button">重新叫號</button>
     <button id="next-button">下一號</button>
   </div>
 
@@ -39,7 +44,23 @@
     const numberDisplay = document.getElementById("number-display");
     const prevButton = document.getElementById("prev-button");
     const nextButton = document.getElementById("next-button");
+    const repeatButton = document.getElementById("repeat-button");
 
+    // 語音叫號函數
+    function speakNumber(number) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(`現在是第 ${number} 號`);
+      utterance.lang = "zh-TW";
+      synth.speak(utterance);
+    }
+
+    // 更新顯示及發聲
+    function updateDisplay() {
+      numberDisplay.textContent = currentNumber;
+      speakNumber(currentNumber);
+    }
+
+    // 上一號按鈕
     prevButton.addEventListener("click", () => {
       if (currentNumber > 1) {
         currentNumber--;
@@ -47,14 +68,19 @@
       }
     });
 
+    // 下一號按鈕
     nextButton.addEventListener("click", () => {
       currentNumber++;
       updateDisplay();
     });
 
-    function updateDisplay() {
-      numberDisplay.textContent = currentNumber;
-    }
+    // 重新叫號按鈕
+    repeatButton.addEventListener("click", () => {
+      speakNumber(currentNumber);
+    });
+
+    // 初始化發聲
+    updateDisplay();
   </script>
 </body>
 </html>
