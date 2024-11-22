@@ -37,7 +37,7 @@
       cursor: pointer;
     }
     h1 {
-      font-size: 300px; /* 數字大小設定為 300px */
+      font-size: 400px; /* 數字大小設定為 400px */
       margin: 20px 0 10px;
     }
     p {
@@ -46,20 +46,19 @@
       margin: 0;
     }
     button {
-      font-size: 1.8rem; /* 按鈕字體稍微縮小 */
-      padding: 10px 25px; /* 調整按鈕內邊距 */
-      margin: 10px;
+      font-size: 0.8rem; /* 調整按鈕字體與全螢幕按鈕一致 */
+      padding: 5px 10px; /* 縮小按鈕內邊距 */
       cursor: pointer;
     }
     input[type="number"] {
-      font-size: 1.8rem; /* 與按鈕一致 */
+      font-size: 0.8rem; /* 與按鈕一致 */
       width: 150px;
-      padding: 10px;
+      padding: 5px;
       margin: 10px 20px; /* 右方空出兩個按鈕大小 */
     }
     .button-container {
       display: flex;
-      gap: 20px;
+      gap: 10px; /* 縮小按鈕間距 */
     }
     .input-container {
       display: flex;
@@ -92,7 +91,7 @@
     <input type="number" id="set-number-input" placeholder="輸入編號" />
     <button id="set-number-button">設定編號</button>
   </div>
-  <div class="footer">© Allen 202411221122</div>
+  <div class="footer">© Allen 202411221028</div>
 
   <script>
     let currentNumber = 1;
@@ -108,7 +107,7 @@
     // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
       const synth = window.speechSynthesis;
-      const message = `請 ${number} 號家屬前來找社工辦理業務`;
+      const message = `請 ${number} 號家屬前來社工區辦理業務`;
       const utterance1 = new SpeechSynthesisUtterance(message);
       const utterance2 = new SpeechSynthesisUtterance(message);
       utterance1.lang = "zh-TW";
