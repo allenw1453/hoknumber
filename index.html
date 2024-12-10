@@ -104,10 +104,11 @@
     <button id="set-number-button">設定編號</button>
   </div>
   <button id="fullscreen-button">全螢幕</button>
-  <div class="footer">© Allen 202411221640</div>
+  <div class="footer">© Allen 202412080000</div>
 
   <script>
-    let currentNumber = 0; // 預設為 0
+    // 初始化號碼
+    let currentNumber = parseInt(localStorage.getItem("currentNumber")) || 0;
 
     const numberDisplay = document.getElementById("number-display");
     const prevButton = document.getElementById("prev-button");
@@ -117,6 +118,11 @@
     const setNumberInput = document.getElementById("set-number-input");
     const setNumberButton = document.getElementById("set-number-button");
     const fullscreenButton = document.getElementById("fullscreen-button");
+
+    // 保存號碼到 localStorage
+    function saveNumber() {
+      localStorage.setItem("currentNumber", currentNumber);
+    }
 
     // 語音叫號函數，重複兩次播報
     function speakNumber(number) {
@@ -139,6 +145,7 @@
     function updateDisplay() {
       numberDisplay.textContent = currentNumber;
       speakNumber(currentNumber);
+      saveNumber(); // 保存號碼
     }
 
     // 全螢幕功能
@@ -200,6 +207,11 @@
           break;
       }
     });
+
+    // 每小時重新整理
+    setInterval(() => {
+      location.reload();
+    }, 3600000); // 3600000 毫秒 = 1 小時
 
     // 初始化發聲
     updateDisplay();
